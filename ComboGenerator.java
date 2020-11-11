@@ -11,72 +11,24 @@ public class ComboGenerator
     System.out.print("Enter a number of moves between 2 and 6 for generating random combo strings: ");
     int userNum = kbReader.nextInt();
     Random rd = new Random();
+    String [] moveList = {"jab", "ftilt", "up tilt", "dtilt", "up strong", "fstrong", "dstrong", "neutral b", "up b", "side b", "down b", "nair", "fair", "bair", "up air", "dair"};
+    //Above: array of length 16, index 15 containing all standard moves that can be inputted from grounded and/or aerial actionable state
     
-    if((userNum>=2) && (userNum<=6))
+    if((userNum>=2) && (userNum<=6)) //checks that the user selected between 2 and 6 moves, then generates combos if true
     {
-      for(int x = 0; x < 10; x++)
+      for(int x = 0; x < 10; x++) //generates 10 sets of userNum amount of moves
       {
-        System.out.print((x + 1) + ": ");
-        for(int i = 0; i < userNum; i++)
+        System.out.print((x + 1) + ": "); //formatting for combo #
+        for(int i = 0; i < (userNum - 1); i++)
         {
-          int move = 1 + rd.nextInt(16);
-          switch(move)
-          {
-            case 1:
-              System.out.print("jab");
-              break;
-            case 2:
-              System.out.print("f tilt");
-              break;
-            case 3:
-              System.out.print("d tilt");
-              break;
-            case 4:
-              System.out.print("up tilt");
-              break;
-            case 5:
-              System.out.print("f strong");
-              break;
-            case 6:
-              System.out.print("d strong");
-              break;
-            case 7:
-              System.out.print("up strong");
-              break;
-            case 8:
-              System.out.print("neutral b");
-              break;
-            case 9:
-              System.out.print("down b");
-              break;
-            case 10:
-              System.out.print("side b");
-              break;
-            case 11:
-              System.out.print("up b");
-              break;
-            case 12:
-              System.out.print("nair");
-              break;
-            case 13:
-              System.out.print("fair");
-              break;
-            case 14:
-              System.out.print("bair");
-              break;
-            case 15:
-              System.out.print("dair");
-              break;
-            case 16:
-              System.out.print("up air");
-              break;
-          }
-          System.out.print(" - ");
+          int move = rd.nextInt(16); //generates random int 0-15, which corresponds to index of any element in moveList
+          System.out.print((moveList[move]) + " - ");
         }
-        System.out.println("");
+        int move = rd.nextInt(16);
+        System.out.println(moveList[move]); //formatting for last move in list, avoids a - marking after
       }
     }
     else
-      System.out.println("Please try again.");
+      System.out.println("Please rerun the program and enter a valid number of moves."); //when user doesn't enter a valid number of moves
   }
 }
